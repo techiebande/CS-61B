@@ -21,10 +21,10 @@ public class TimeSLList {
         timeGetLast();
     }
 
-    private static void tester(AList<Integer> Ns, AList<Double> times, AList<Integer> opCounts, int size){
+    private static void tester(AList<Integer> Ns, AList<Double> times, AList<Integer> opCounts, int N){
         SLList<Integer> list = new SLList<>();
 
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < N; i++){
             list.addFirst(i);
         }
 
@@ -36,7 +36,7 @@ public class TimeSLList {
 
         double elapsedTime = sw.elapsedTime();
 
-        Ns.addLast(size);
+        Ns.addLast(N);
         times.addLast(elapsedTime);
         opCounts.addLast(1000);
     }
@@ -54,7 +54,6 @@ public class TimeSLList {
         tester(Ns, times, opCounts, 16000);
         tester(Ns, times, opCounts, 32000);
         tester(Ns, times, opCounts, 64000);
-        tester(Ns, times, opCounts, 128000);
 
         printTimingTable(Ns, times, opCounts);
     }
