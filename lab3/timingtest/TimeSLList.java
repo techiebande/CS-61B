@@ -30,7 +30,7 @@ public class TimeSLList {
 
         Stopwatch sw = new Stopwatch();
 
-        for(int i = 0; i < 1000; i++){
+        for(int i = 0; i < 10000; i++){
             list.getLast();
         }
 
@@ -38,7 +38,7 @@ public class TimeSLList {
 
         Ns.addLast(N);
         times.addLast(elapsedTime);
-        opCounts.addLast(1000);
+        opCounts.addLast(10000);
     }
 
     public static void timeGetLast() {
@@ -54,6 +54,8 @@ public class TimeSLList {
         tester(Ns, times, opCounts, 16000);
         tester(Ns, times, opCounts, 32000);
         tester(Ns, times, opCounts, 64000);
+        tester(Ns, times, opCounts, 128000);
+
 
         printTimingTable(Ns, times, opCounts);
     }
