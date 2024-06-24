@@ -50,13 +50,6 @@ public class TimeAList {
         tester(Ns, times, opCounts, 32000);
         tester(Ns, times, opCounts, 64000);
         tester(Ns, times, opCounts, 128000);
-        tester(Ns, times, opCounts, 256000);
-        tester(Ns, times, opCounts, 512000);
-        tester(Ns, times, opCounts, 1000000);
-        tester(Ns, times, opCounts, 2000000);
-        tester(Ns, times, opCounts, 4000000);
-        tester(Ns, times, opCounts, 8000000);
-        tester(Ns, times, opCounts, 16000000);
 
 
 
