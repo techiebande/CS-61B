@@ -1,6 +1,9 @@
 package deque;
 
 import org.junit.Test;
+
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 
@@ -124,6 +127,175 @@ public class LinkedListDequeTest {
         for (double i = 999999; i > 500000; i--) {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
+
+    }
+
+    @Test
+    public void addFirstTest(){
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>();
+         dql.addFirst(4);
+
+         int first = dql.get(0);
+
+         assertEquals(4,first);
+
+         dql.addFirst(6);
+         dql.addFirst(69);
+         dql.removeFirst();
+
+         first = dql.get(0);
+         assertEquals(6,first);
+
+    }
+
+    @Test
+    public void addLastTest(){
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>();
+        dql.addLast(4);
+
+        int last = dql.removeLast();
+
+        assertEquals(4,last);
+
+        dql.addLast(6);
+        dql.addLast(69);
+        last = dql.removeLast();
+
+        assertEquals(69,last);
+    }
+
+    @Test
+    public void isEmptyTest() {
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>();
+        dql.addLast(4);
+
+        boolean isEmpty = dql.isEmpty();
+
+        assertFalse(isEmpty);
+
+        dql.removeLast();
+
+        isEmpty = dql.isEmpty();
+
+        assertTrue(isEmpty);
+    }
+
+    @Test
+    public void sizeTest() {
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>(4);
+
+        int size = dql.size();
+
+        assertEquals(1, size);
+
+        dql.removeLast();
+
+        size = dql.size();
+
+        assertEquals(0, size);
+
+        dql.addFirst(4);
+        dql.addFirst(4);
+        dql.addFirst(4);
+        dql.addFirst(4);
+        dql.addLast(6);
+        dql.addLast(6);
+        dql.addLast(6);
+        dql.addLast(6);
+        dql.addLast(6);
+        dql.removeLast();
+        dql.removeLast();
+        dql.removeLast();
+        dql.removeLast();
+        dql.addFirst(4);
+        dql.addFirst(4);
+        dql.removeFirst();
+        dql.removeFirst();
+        dql.removeFirst();
+
+        size = dql.size();
+
+
+        assertEquals(4, size);
+    }
+
+    @Test
+    public void removeFirstTest() {
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>();
+
+        dql.addLast(3);
+        dql.addFirst(2);
+        dql.addLast(5);
+        dql.addFirst(4);
+
+        int first = dql.removeFirst();
+        assertEquals(4, first);
+
+        first = dql.get(0);
+        assertEquals(2,first);
+    }
+
+    @Test
+    public void removeLastTest() {
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>();
+
+        dql.addLast(3);
+        dql.addFirst(2);
+        dql.addLast(5);
+        dql.addFirst(4);
+
+        int last = dql.removeLast();
+        assertEquals(5, last);
+
+        int size = dql.size();
+
+        last = dql.get(size - 1);
+        assertEquals(3,last);
+    }
+
+    @Test
+    public void getTest() {
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>(3);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(85);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(4);
+
+
+        int first = dql.get(0);
+        int second = dql.get(1);
+        int sixth = dql.get(5);
+
+        assertEquals(3, first);
+        assertEquals(4, second);
+        assertEquals(85, sixth);
+
+    }
+
+    @Test
+    public void recursiveGetTest() {
+        LinkedListDeque<Integer> dql = new LinkedListDeque<>(3);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(85);
+        dql.addLast(4);
+        dql.addLast(4);
+        dql.addLast(4);
+
+
+        int first = dql.getRecursive(0);
+        int second = dql.getRecursive(1);
+        int sixth = dql.getRecursive(5);
+
+        assertEquals(3, first);
+        assertEquals(4, second);
+        assertEquals(85, sixth);
 
     }
 
