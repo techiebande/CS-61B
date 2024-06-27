@@ -70,7 +70,7 @@ public class ArrayDeque<T> {
         T first = items[0];
 
         T[] newArray = (T[]) new Object[items.length];
-        System.arraycopy(items, 1, newArray, 0, size);
+        System.arraycopy(items, 1, newArray, 0, size - 1);
         items = newArray;
 
         size -= 1;
