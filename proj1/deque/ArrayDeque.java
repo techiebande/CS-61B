@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Objects;
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
     private T[] items;
     private int size;
 
@@ -21,6 +21,7 @@ public class ArrayDeque<T> {
         items = newArray;
     }
 
+    @Override
     public void addFirst(T x){
 
         if(isFull()){
@@ -35,6 +36,7 @@ public class ArrayDeque<T> {
         size += 1;
     }
 
+    @Override
     public void addLast(T x){
         if (isFull()) {
             resize(size * 2, "back");
@@ -43,14 +45,12 @@ public class ArrayDeque<T> {
         size += 1;
     }
 
+    @Override
     public int size(){
         return size;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
+    @Override
     public void printDeque() {
         for(int i = 0; i < size; i++){
             System.out.print(items[i] + " ");
@@ -58,6 +58,7 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
+    @Override
     public T removeFirst() {
         if(size == 0){
             return null;
@@ -78,6 +79,7 @@ public class ArrayDeque<T> {
         return first;
     }
 
+    @Override
     public T removeLast() {
         if(size == 0){
             return null;
@@ -94,6 +96,7 @@ public class ArrayDeque<T> {
         return last;
     }
 
+    @Override
     public T get(int x){
         if(size != 0){
             return items[x];

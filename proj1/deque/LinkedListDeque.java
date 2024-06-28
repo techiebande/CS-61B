@@ -1,6 +1,6 @@
 package deque;
 
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T> implements Deque<T> {
 
     private class TNode{
         public T item;
@@ -31,6 +31,7 @@ public class LinkedListDeque<T> {
         size += 1;
     }
 
+    @Override
     public void addFirst(T x){
         TNode first = sentinel.next;
         TNode newNode = new TNode(x, first, sentinel);
@@ -39,6 +40,7 @@ public class LinkedListDeque<T> {
         first.prev = newNode;
     }
 
+    @Override
     public void addLast(T x){
         TNode last = sentinel.prev;
         TNode newNode = new TNode(x, sentinel, last);
@@ -46,10 +48,8 @@ public class LinkedListDeque<T> {
         size += 1;
         sentinel.prev = newNode;
     }
-    public boolean isEmpty(){
-        return sentinel.next == sentinel;
-    }
 
+    @Override
     public int size() {
         return size;
     }
@@ -66,10 +66,12 @@ public class LinkedListDeque<T> {
         printDeque(list.next);
     }
 
+    @Override
     public void printDeque(){
         printDeque(sentinel.next);
     }
 
+    @Override
     public T removeFirst(){
         if(size > 0){
             TNode first = sentinel.next;
@@ -82,6 +84,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+    @Override
     public T removeLast(){
         if(size > 0){
             TNode last = sentinel.prev;
@@ -94,6 +97,7 @@ public class LinkedListDeque<T> {
         }
     }
 
+    @Override
     public T get(int index){
         if(size < 1 || index >= size){
             return null;
@@ -118,6 +122,7 @@ public class LinkedListDeque<T> {
         }
         return getRecursive(index, 1 + count, list.next);
     }
+
 
     public T getRecursive(int index){
         if(size < 1 || index >= size){
