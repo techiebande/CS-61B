@@ -6,27 +6,27 @@ public class ArrayDeque<T> implements Deque<T> {
     private T[] items;
     private int size;
 
-    public ArrayDeque(){
+    public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
     }
 
-    private boolean isFull(){
+    private boolean isFull() {
         return size == items.length;
     }
 
-    private void resize(int capacity, String position){
+    private void resize(int capacity, String position) {
         T[] newArray = (T[]) new Object[capacity];
         System.arraycopy(items, 0, newArray, Objects.equals(position, "back") ? 0 : 1, size);
         items = newArray;
     }
 
     @Override
-    public void addFirst(T x){
+    public void addFirst(T x) {
 
-        if(isFull()){
+        if (isFull()) {
             resize(size * 2, "front");
-        }else{
+        } else {
             T[] newArray = (T[])  new Object[items.length];
             System.arraycopy(items, 0, newArray, 1, size);
             items = newArray;
@@ -37,7 +37,7 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     @Override
-    public void addLast(T x){
+    public void addLast(T x) {
         if (isFull()) {
             resize(size * 2, "back");
         }
@@ -46,13 +46,13 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     @Override
-    public int size(){
+    public int size() {
         return size;
     }
 
     @Override
     public void printDeque() {
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < size; i++) {
             System.out.print(items[i] + " ");
         }
         System.out.println();
@@ -60,11 +60,11 @@ public class ArrayDeque<T> implements Deque<T> {
 
     @Override
     public T removeFirst() {
-        if(size == 0){
+        if (size == 0) {
             return null;
         }
-        if(items.length > 16){
-            if(size < 0.25 * items.length){
+        if (items.length > 16) {
+            if (size < 0.25 * items.length) {
                 resize((int) (0.25 * items.length), "back");
             }
         }
@@ -81,11 +81,11 @@ public class ArrayDeque<T> implements Deque<T> {
 
     @Override
     public T removeLast() {
-        if(size == 0){
+        if (size == 0) {
             return null;
         }
-        if(items.length > 16){
-            if(size < 0.25 * items.length){
+        if (items.length > 16) {
+            if(size < 0.25 * items.length) {
                 resize((int) (0.25 * items.length), "back");
             }
         }
@@ -97,8 +97,8 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     @Override
-    public T get(int x){
-        if(size != 0){
+    public T get(int x) {
+        if (size != 0) {
             return items[x];
         }
         return null;
