@@ -52,7 +52,7 @@ public class ArrayDeque<T> implements Deque<T> {
 
     @Override
     public void printDeque() {
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             System.out.print(items[i] + " ");
         }
         System.out.println();
@@ -85,7 +85,7 @@ public class ArrayDeque<T> implements Deque<T> {
             return null;
         }
         if (items.length > 16) {
-            if(size < 0.25 * items.length) {
+            if (size < 0.25 * items.length) {
                 resize((int) (0.25 * items.length), "back");
             }
         }

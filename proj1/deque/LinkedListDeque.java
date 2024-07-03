@@ -2,10 +2,10 @@ package deque;
 
 public class LinkedListDeque<T> implements Deque<T> {
 
-    private class TNode{
-        public T item;
-        public TNode prev;
-        public TNode next;
+    private class TNode {
+        private T item;
+        private TNode prev;
+        private TNode next;
 
         private TNode(T x, TNode n, TNode p) {
             item = x;
@@ -79,7 +79,7 @@ public class LinkedListDeque<T> implements Deque<T> {
             first.next.prev = sentinel;
             size -= 1;
             return first.item;
-        }else {
+        } else {
             return null;
         }
     }
@@ -92,7 +92,7 @@ public class LinkedListDeque<T> implements Deque<T> {
             last.prev.next = sentinel;
             size -= 1;
             return last.item;
-        }else {
+        } else {
             return null;
         }
     }
@@ -105,7 +105,7 @@ public class LinkedListDeque<T> implements Deque<T> {
 
         TNode list = sentinel.next;
 
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             if (i == index) {
                 return list.item;
             }
