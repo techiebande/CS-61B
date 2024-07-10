@@ -117,11 +117,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             position = 0;
         }
 
-
         public boolean hasNext() {
             return position < size;
         }
-
 
         public T next() {
             T returnValue =  items[position];
@@ -130,15 +128,24 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         }
     }
 
-    public static void main(String[] args) {
-        ArrayDeque<Integer> adq = new ArrayDeque<>();
-        adq.addLast(2);
-        adq.addLast(67);
-        adq.addLast(205);
-        adq.addLast(2134);
-
-        for (int x: adq) {
-            System.out.println(x);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+
+        if (o instanceof ArrayDeque otherObject) {
+            if(this.size() != otherObject.size()){
+                return false;
+            }
+            for (T x: this) {
+                if (!x.equals(otherObject.removeFirst())) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        return false;
     }
 }

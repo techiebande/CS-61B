@@ -156,15 +156,24 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         }
     }
 
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> lldq = new LinkedListDeque<>();
-        lldq.addLast(6);
-        lldq.addLast(9);
-        lldq.addLast(63);
-        lldq.addLast(62);
-
-        for (int x: lldq) {
-            System.out.println(x);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+
+        if (o instanceof LinkedListDeque otherObject) {
+            if(this.size() != otherObject.size()){
+                return false;
+            }
+            for (T x: this) {
+                if (!x.equals(otherObject.removeFirst())) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        return false;
     }
 }
